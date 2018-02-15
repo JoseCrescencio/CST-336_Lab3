@@ -11,7 +11,7 @@
             
             $player1 = array(
                 'name' => 'Faith',
-                'imgURL' => './img/user_pics/faith.jpg',
+                'imgURL' => './img/user_pics/Faith.jpg',
                 'hand' => array(),
                 'points' => 0
                 );
@@ -33,6 +33,14 @@
                 'hand' => array(),
                 'points' => 0
                 );
+            
+            $player4 = array(
+                'name' => 'Maria',
+                'imgURL' => './img/user_pics/Maria.JPG',
+                'hand' => array(),
+                'points' => 0
+                );
+            
             
             $allPlayers = array(
                 $player1,
