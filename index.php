@@ -22,7 +22,7 @@
                 'points' => 0
                 );
             $player3 = array(
-                'name' => 'Jose',
+                'name' => 'JoseC',
                 'imgURL' => './img/user_pics/corgo.jpg',
                 'hand' => array(),
                 'points' => 0
