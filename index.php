@@ -22,8 +22,8 @@
                 'points' => 0
                 );
             $player3 = array(
-                'name' => 'Luis',
-                'imgURL' => './img/user_pics/doggo.jpg',
+                'name' => 'Jose',
+                'imgURL' => './img/user_pics/corgo.jpg',
                 'hand' => array(),
                 'points' => 0
                 );
