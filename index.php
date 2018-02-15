@@ -34,7 +34,7 @@
                 'points' => 0
                 );
             
-            $player4 = array(
+            $player5 = array(
                 'name' => 'Maria',
                 'imgURL' => './img/user_pics/Maria.JPG',
                 'hand' => array(),
@@ -46,7 +46,8 @@
                 $player1,
                 $player2,
                 $player3,
-                $player4
+                $player4,
+                $player5
                 );
             
             function printGameState($allPlayers) {
