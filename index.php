@@ -28,8 +28,8 @@
                 'points' => 0
                 );
             $player4 = array(
-                'name' => 'Pockets',
-                'imgURL' => './img/user_pics/cat.jpeg',
+                'name' => 'Brandon',
+                'imgURL' => './img/user_pics/Brandon.JPG',
                 'hand' => array(),
                 'points' => 0
                 );
