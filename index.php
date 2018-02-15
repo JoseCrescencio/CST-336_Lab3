@@ -11,7 +11,7 @@
             
             $player1 = array(
                 'name' => 'Faith',
-                'imgURL' => './img/user_pics/blue_jay.jpg',
+                'imgURL' => './img/user_pics/faith.jpg',
                 'hand' => array(),
                 'points' => 0
                 );
