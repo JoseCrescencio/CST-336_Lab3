@@ -99,9 +99,10 @@
             }
             
             function generateDeck() {
-                $cards = array();
                 for($i = 1; $i < 53; $i++) {
-                    array_push($cards, getImgURLForCardIndex($i));
+                    $cards = array(
+                        'imgURL' => getImgURLForCardIndex($i)
+                        );
                 }
                 
             }
