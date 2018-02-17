@@ -88,19 +88,23 @@
                 $suitIndex = floor(($index%13) + 1);
                 
                 //echo "<img src='img/cards/$cardSuit/$suitIndex.png' >";
-                return "<img src='img/cards/$cardSuit/$suitIndex' />";
+                return "<img src='img/cards/$cardSuit/$suitIndex.png' />";
             }
+            
             
             function generateDeck() {
-                for($i = 0; $i < 51; $i++) {
-                    $card = array(
+                for($i = 1; $i < 53; $i++) {
+                    $cards = array(
                         'imgURL' => getImgURLForCardIndex($i)
                         );
+                    return $cards[imgURL];
                 }
+
             }
-            
+             
             printGameState($allPlayers);
             generateDeck();
+            echo generateDeck();
         ?>
         
     </center></body>
