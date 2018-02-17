@@ -87,13 +87,13 @@
                         break;
                 }
                 
-                return "<img src='img/cards/$cardSuit/$suitIndex' />"
+                return "<img src='img/cards/$cardSuit/$suitIndex' />";
             }
             
             function generateDeck() {
                 for($i = 0; $i < 51; $i++) {
                     $card = array(
-                        'imgURL' => getImgURLForCardIndex($i);
+                        'imgURL' => getImgURLForCardIndex($i)
                         );
                 }
             }
