@@ -57,8 +57,6 @@
                 }
             }
             
-            printGameState($allPlayers);
-            
             //pseudocode:
             //create an array of 52 cards
             //each card an associative array ==? suit, rank, imgURL, points
