@@ -96,15 +96,7 @@
                     $card = array(
                         'imgURL' => getImgURLForCardIndex($i)
                         );
-            }
-            
-            function generateDeck() {
-                for($i = 1; $i < 53; $i++) {
-                    $cards = array(
-                        'imgURL' => getImgURLForCardIndex($i)
-                        );
                 }
-                
             }
             
             printGameState($allPlayers);
