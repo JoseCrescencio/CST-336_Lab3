@@ -57,6 +57,14 @@
                 }
             }
             
+            function calcPoints($allPlayers){
+                foreach ($allPlayers as $player) {
+                    foreach ($hand as $num){
+                        $player['points'] += floor($num/13);
+                    }
+                }
+            }
+            
             //pseudocode:
             //create an array of 52 cards
             //each card an associative array ==? suit, rank, imgURL, points
@@ -87,7 +95,11 @@
                         break;
                 }
                 
+<<<<<<< HEAD
                 return "<img src='img/cards/$cardSuit/$suitIndex' />";
+=======
+                return "<img src='./img/cards/$cardSuit/$suitIndex' />";
+>>>>>>> Point Count Function
             }
             
             function generateDeck() {
@@ -99,7 +111,7 @@
             }
             
             printGameState($allPlayers);
-            getImgURLForCardIndex(51);
+            echo getImgURLForCardIndex(51);
         ?>
         
     </center></body>
