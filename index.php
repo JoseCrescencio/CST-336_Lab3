@@ -93,18 +93,18 @@
             
             
             function generateDeck() {
+                $cards = array();
                 for($i = 1; $i < 53; $i++) {
-                    $cards = array(
-                        'imgURL' => getImgURLForCardIndex($i)
-                        );
-                    return $cards[imgURL];
+                    array_push($cards, getImgURLForCardIndex($i));
                 }
-
+                shuffle($cards);
+                return $cards;
             }
              
             printGameState($allPlayers);
-            generateDeck();
-            echo generateDeck();
+
+            $deck = generateDeck();
+            //echo $deck;
         ?>
         
     </center></body>
