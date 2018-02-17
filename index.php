@@ -75,31 +75,20 @@
                 //get a number from 0 to 51
                 //return an image url
                 
-                $suitIndex = floor($index/13);
-                echo "suitIndex: $suitIndex";
-                
-                $randomValue1 = rand(1, 4);
-                
-                switch($randomValue1) {
-                    case 1:
-                        $cardSuit = "clubs";
-                        break;
-                    case 2:
-                        $cardSuit = "diamonds";
-                        break;
-                    case 3:
-                        $cardSuit = "hearts";
-                        break;
-                    case 4:
-                        $cardSuit = "spades";
-                        break;
+                if($index > 0 && $index < 14) {
+                    $cardSuit = "clubs";
+                } else if($index > 13 && $index < 27) {
+                    $cardSuit = "diamonds";
+                } else if($index > 26 && $index < 41) {
+                    $cardSuit = "hearts";
+                } else if($index > 40 && $index < 53) {
+                    $cardSuit = "spades";
                 }
                 
-<<<<<<< HEAD
+                $suitIndex = floor(($index%13) + 1);
+                
+                //echo "<img src='img/cards/$cardSuit/$suitIndex.png' >";
                 return "<img src='img/cards/$cardSuit/$suitIndex' />";
-=======
-                return "<img src='./img/cards/$cardSuit/$suitIndex' />";
->>>>>>> Point Count Function
             }
             
             function generateDeck() {
@@ -107,13 +96,19 @@
                     $card = array(
                         'imgURL' => getImgURLForCardIndex($i)
                         );
+            }
+            
+            function generateDeck() {
+                $cards = array();
+                for($i = 1; $i < 53; $i++) {
+                    array_push($cards, getImgURLForCardIndex($i));
                 }
+                
             }
             
             printGameState($allPlayers);
-            echo getImgURLForCardIndex(51);
+            generateDeck();
         ?>
         
     </center></body>
 </html>
-
