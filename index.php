@@ -68,14 +68,32 @@
                 //return an image url
                 
                 $suitIndex = floor($index/13);
-                
                 echo "suitIndex: $suitIndex";
+                
+                $randomValue1 = rand(1, 4);
+                
+                switch($randomValue1) {
+                    case 1:
+                        $cardSuit = "clubs";
+                        break;
+                    case 2:
+                        $cardSuit = "diamonds";
+                        break;
+                    case 3:
+                        $cardSuit = "hearts";
+                        break;
+                    case 4:
+                        $cardSuit = "spades";
+                        break;
+                }
+                
+                return "<img src='img/cards/$cardSuit/$suitIndex' />"
             }
             
             function generateDeck() {
                 for($i = 0; $i < 51; $i++) {
                     $card = array(
-                        'imgURL' => ""
+                        'imgURL' => getImgURLForCardIndex($i);
                         );
                 }
             }
