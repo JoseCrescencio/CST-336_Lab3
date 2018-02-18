@@ -36,7 +36,7 @@
             
             $player5 = array(
                 'name' => 'Maria',
-                'imgURL' => './img/user_pics/Evelin.JPG',
+                'imgURL' => './img/user_pics/Evelin.jpg',
                 'hand' => array(),
                 'points' => 0
                 );
