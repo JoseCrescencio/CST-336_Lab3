@@ -54,6 +54,8 @@
                 foreach ($allPlayers as $player) {
                     echo "<img width='200' src='" . $player['imgURL'] . "' />";
                     echo $player['name'] . "<br>";
+                    echo $player['hand'] . "<br>";
+                   
                 }
             }
             
@@ -92,19 +94,53 @@
             }
             
             
-            function generateDeck() {
+            function generateDeck() { //Shuffling deck, randomizing
                 $cards = array();
                 for($i = 1; $i < 53; $i++) {
                     array_push($cards, getImgURLForCardIndex($i));
                 }
                 shuffle($cards);
-                return $cards;
+               // echo $cards;
+              
+                return $cards; 
             }
-             
-            printGameState($allPlayers);
+             printGameState($allPlayers);
 
             $deck = generateDeck();
-            //echo $deck;
+            
+             //call generate hand here
+            //echo $deck[0];
+        
+           
+            function generateHand($allPlayers,$deck) { //Generating players hand of 5 cards
+            $deckMarker = 53; //Placeholder for deck
+           // echo $deck[0];
+                foreach ($allPlayers as $player) {
+                    
+                    
+                    for($i = 0; $i < 5 ; $i++)
+                    {
+                        
+                        array_push($player['hand'],$deck[$deckMarker-$i]);
+                        //echo $player['hand'][$i];
+                       
+                    }
+                    $deckMarker = $deckMarker - 5; //next hand
+                    for($x = 0; $x < 5; $x++)
+                    {
+                         echo $player['hand'][$x];
+                    }
+                   
+                    echo $deckMarker;
+                  
+                       
+                     
+                    //echo $player['hand'] . "<br>";
+                }
+                        
+            }
+            echo generateHand($allPlayers,$deck);
+           
         ?>
         
     </center></body>
