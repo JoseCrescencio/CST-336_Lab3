@@ -1,3 +1,7 @@
+<?php
+    include 'inc/functions.php';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,10 +12,9 @@
     <body><center>
         <h1>SilverJack</h1>
         <?php
-            
-            
-
-
+        
+            printGameState($allPlayers);
+            $deck = generateDeck();
         ?>
         
     </center></body>

@@ -91,11 +91,6 @@
                 shuffle($cards);
                 return $cards;
             }
-             
-            printGameState($allPlayers);
-
-            $deck = generateDeck();
-            
             
             //echo $deck;
         ?>
