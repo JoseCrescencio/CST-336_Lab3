@@ -9,14 +9,14 @@
         <title>SilverJack</title>
     </head>
     
-    <body><center>
-        <h1>SilverJack</h1>
-        <?php
-        
-            printGameState($allPlayers);
-            $deck = generateDeck();
-            echo generateHand($allPlayers,$deck);
-        ?>
-        
-    </center></body>
+    <body>
+        <center>
+            <h1>SilverJack</h1>
+            <?php
+                $deck = generateDeck();
+                generateHand($deck);
+                printGameState($allPlayers);
+            ?>
+        </center>
+    </body>
 </html>

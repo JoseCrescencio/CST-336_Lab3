@@ -44,7 +44,10 @@
             function printGameState($allPlayers) {
                 foreach ($allPlayers as $player) {
                     echo "<img width='200' src='" . $player['imgURL'] . "' />";
-                    echo $player['name'] . "<br>"; 
+                    echo $player['name'] . "<br>";
+                    for($i = 0; $i < 5; ++$i){
+                       echo $player['hand'][$i];
+                    }
                    
                 }
         
@@ -94,27 +97,20 @@
                // echo $cards;
               
                 return $cards; 
-            }
-            
-           
+            }           
             
     
-            function generateHand($allPlayers,$deck) { //Generating players hand of 5 cards
-            $deckMarker = 51; //Placeholder for deck
-           
-                foreach ($allPlayers as $player) {
-                    
+            function generateHand($deck) { //Generating players hand of 5 cards
+                $deckMarker = 51; //Placeholder for deck
+                $playerNum = 1;
+                
+            for($j = 0 ; $j < 5; ++$j ){
+                    ++$playerNum;
                     for($i = 0; $i < 5 ; $i++)
                     {
-                        array_push($player['hand'],$deck[$deckMarker-$i]);
+                        $GLOBALS['allPlayers']['player' . $playerNum]['hand'][$i] = $deck[$deckMarker];
+                        --$deckMarker;
                     }
-                    $deckMarker = $deckMarker - 5; //next hand
-                    for($x = 0; $x < 5; $x++)
-                    {
-                         echo $player['hand'][$x];
-                    }
-                   
-                    echo $player['name'] . "<br>";
                   
                 }
                         
@@ -122,6 +118,3 @@
             
            
         ?>
-        
-    </center></body>
-</html>
