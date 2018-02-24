@@ -95,8 +95,8 @@
               
                 return $cards; 
             }
-             printGameState($allPlayers);
-            $deck = generateDeck();
+            
+           
             
     
             function generateHand($allPlayers,$deck) { //Generating players hand of 5 cards
@@ -119,7 +119,7 @@
                 }
                         
             }
-            echo generateHand($allPlayers,$deck);
+            
            
         ?>
         

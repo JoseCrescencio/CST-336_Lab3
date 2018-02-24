@@ -15,6 +15,7 @@
         
             printGameState($allPlayers);
             $deck = generateDeck();
+            echo generateHand($allPlayers,$deck);
         ?>
         
     </center></body>
