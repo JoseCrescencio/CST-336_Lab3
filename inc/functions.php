@@ -97,6 +97,51 @@
             $deck = generateDeck();
             
             
+            
+            
+            //going to work on a function to generate players scores
+            
+            
+           // The total points per player is displayed properly	15 pts
+            //The winner(s) is(are) displayed properly with the earned points
+            /*function generatePoints() {
+                
+            }
+           
+           
+           
+           
+           
+           function displayWinner() {
+        //global variables
+        global $score; 
+        global $player;//
+        $winner = 0;
+        $lowScore = 0;
+        $totalScore = 0;
+        $closest=$score[0];
+        for( $i= 0; $i < 5; $i++ )// finds out who the winner is 
+        { 
+            $lowScore=($score[$i]-42);
+            
+            if($lowScore<$closest)
+            {
+                $closest = $lowScore;
+                $winner = $i;
+            }
+        }
+        
+        for($j=0; $j<4; $j++) //prints out the winner out of the 4 players
+        {
+           if($j != $winner)
+           {
+            $totalScore = $totalScore + $score[$j];
+           }
+            }
+            //prints out the winner
+        echo 'The Winner is: ' . $player[$winner] . ' The Score is: ' . $totalScore;
+    }
+            */
             //echo $deck;
         ?>
         
