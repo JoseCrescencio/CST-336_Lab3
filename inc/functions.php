@@ -151,7 +151,7 @@
             }
         }
         
-        for($j=0; $j<4; $j++) //prints out the winner out of the 4 players
+        for($j=0; $j<5; $j++) //prints out the winner out of the 5 players
         {
            if($j != $winner)
            {
