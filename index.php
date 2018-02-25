@@ -12,13 +12,14 @@
    
     
     <body>
-        <center>
+      <div id="page-wrap">
+
             <h1>SilverJack</h1>
             <?php
                 $deck = generateDeck();
                 generateHand($deck);
                 printGameState($allPlayers);
             ?>
-        </center>
+        </div>
     </body>
 </html>
