@@ -45,12 +45,12 @@
                 foreach ($allPlayers as $player) {
                     echo "<img width='200' src='" . $player['imgURL'] . "' />";
                     echo $player['name'] . "<br>";
+                    echo "<div id='player' >";
                     for($i = 0; $i < 5; ++$i){
                        echo $player['hand'][$i];
                     }
-                   
+                    echo "</div>";
                 }
-        
             }
             
             function calcPoints($allPlayers){
