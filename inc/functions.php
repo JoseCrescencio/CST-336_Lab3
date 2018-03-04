@@ -6,24 +6,28 @@
             'name' => 'Faith',
             'imgURL' => './img/user_pics/Faith.jpg',
             'hand' => array(),
+            'handPoints' => array(), //For suit Index/ point calculation
             'points' => 0
             );
         $player2 = array(
             'name' => 'Eros',
             'imgURL' => './img/user_pics/Eros.JPG',
             'hand' => array(),
+            'handPoints' => array(),
             'points' => 0
             );
         $player3 = array(
             'name' => 'JoseC',
             'imgURL' => './img/user_pics/corgo.jpg',
             'hand' => array(),
+            'handPoints' => array(),
             'points' => 0
             );
         $player4 = array(
             'name' => 'Brandon',
             'imgURL' => './img/user_pics/Brandon.JPG',
             'hand' => array(),
+            'handPoints' => array(),
             'points' => 0
             );
         
@@ -31,6 +35,7 @@
             'name' => 'Evelin',
             'imgURL' => './img/user_pics/Evelin.jpg',
             'hand' => array(),
+            'handPoints' => array(),
             'points' => 0
             );
             
