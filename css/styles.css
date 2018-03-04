@@ -1,7 +1,7 @@
 body{
     background-color: black;   
     background-image: url("https://miswordsdotcom.files.wordpress.com/2017/02/playing-cardes.jpg");
-    
+    color: white;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -13,14 +13,14 @@ body{
 h1{
     color: white;
     font-size: 2.5em;
-    
-    
 }
+
 img {
     padding: 9px;
     border: 5px solid #021a40;
     background-color: #fbfbf8;
 }
+
 #page-wrap {
     width: 800px;
     margin: 0 auto;

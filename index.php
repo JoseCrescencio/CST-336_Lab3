@@ -16,7 +16,9 @@
             <h1>SilverJack</h1>
             <?php
                 $deck = generateDeck();
+                initializePlayers();
                 generateHand($deck);
+                calcPoints($allPlayers);
                 printGameState($allPlayers);
             ?>
         </div>
