@@ -63,7 +63,7 @@
             echo $player['name'] . "<br>";
             echo "<div id='player' >";
             for($i = 0; $i < 5; ++$i){
-               echo $player['hand'][$i];
+               echo $player['hand'][$i]->imgUrl;
             }
             echo $player['points'];
             echo "</div>";
@@ -110,7 +110,7 @@
     
     
     function generateDeck() { //Shuffling deck, randomizing
-        $cards = array();
+        $cards = array(); // array of card objects
         for($i = 1; $i < 53; $i++) {
             array_push($cards, getImgURLForCardIndex($i));
         }
