@@ -60,19 +60,6 @@
             );
     }
     
-    function printGameState($allPlayers) {
-        foreach ($allPlayers as $player) {
-            echo "<img width='200' src='" . $player['imgURL'] . "' />";
-            echo $player['name'] . "<br>";
-            echo "<div id='player' >";
-            for($i = 0; $i < count($player['hand']); ++$i){
-               echo $player['hand'][$i]->imgUrl;
-            }
-            echo $player['handPoints'];
-            echo "</div>";
-        }
-    }
-    
     function calcPoints($allPlayers){
         foreach ($allPlayers as $player) {
             foreach ($player['handPoints'] as $num){
@@ -138,7 +125,21 @@
                 --$deckMarker;
             }
         }
-    }  
+    }
+    
+    function printGameState($allPlayers) {
+        foreach ($allPlayers as $player) {
+            if($player['imgURL']) {
+                echo "<img width='200' src='" . $player['imgURL'] . "' />";
+                echo $player['name'] . "<br>";
+            }
+            for($i = 0; $i < count($player['hand']); ++$i){
+               echo $player['hand'][$i]->imgUrl;
+            }
+            echo $player['handPoints'];
+            echo "</br>";
+        }
+    }
     
     //going to work on a function to generate players scores
     
