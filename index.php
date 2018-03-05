@@ -19,6 +19,7 @@
                 initializePlayers();
                 generateHand($deck);
                 calcPoints($allPlayers);
+                
                 printGameState($allPlayers);
             ?>
         </div>

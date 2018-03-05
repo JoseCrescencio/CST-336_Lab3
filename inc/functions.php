@@ -54,8 +54,8 @@
         $player5 = array(
             'var' => "player5",
             'winner' => false,
-            'name' => $names[4],
-            'imgURL' => './img/user_pics/' . $names[4] . '.jpg',
+            'name' => "Evelin",
+            'imgURL' => './img/user_pics/Evelin.jpg',
             'hand' => array(),
             'handPoints' => 0,
             'points' => 0
@@ -70,33 +70,85 @@
             );
     }
     
+    // function printGameState($allPlayers) {
+    //     foreach ($allPlayers as $player) {
+    //         echo "<img width='200' src='" . $player['imgURL'] . "' />";
+    //         echo $player['name'] . "<br>";
+    //         echo "<div id='player' >";
+    //         for($i = 0; $i < 5; ++$i){
+    //           echo $player['hand'][$i]->imgUrl;
+    //         }
+    //         echo "Hand Points: " . $player['handPoints'];
+    //         echo "<br> Player points: " . $player['points'];
+    //         echo "</div>";
+    //     }
+    // }
+    
     function printGameState($allPlayers) {
+        $dup = calcDup($allPlayers);
+        $tie = array();
+        
         foreach ($allPlayers as $player) {
-            echo "<img width='200' src='" . $player['imgURL'] . "' />";
-            echo $player['name'] . "<br>";
-            echo "<div id='player' >";
-            for($i = 0; $i < 5; ++$i){
-               echo $player['hand'][$i]->imgUrl;
+            if($player['imgURL']) {
+                echo "<img width='200' src='" . $player['imgURL'] . "' />";
+                echo $player['name'] . "<br>";
             }
-            echo "Hand Points: " . $player['handPoints'];
-            echo "<br> Player points: " . $player['points'];
+            echo "<div id='player' >";
+            for($i = 0; $i < count($player['hand']); ++$i){
+              echo $player['hand'][$i]->imgUrl;
+            }
+            echo $player['handPoints'];
             echo "</div>";
+            
         }
+        
+        foreach($allPlayers as $player){
+            if($dup == false && $player['winner'] == true){
+                echo $player['name'] . " Wins " . $player['points'] . " points!!";
+            }
+            elseif($dup == true && $player['winner'] == true){
+                array_push($tie,$player);
+                if(count($tie) == 2)
+                    break;
+            }
+        }
+        
+        print_r($tie);
+        
+        if($dup == true)
+        echo $tie[0]['name'] . " and " . $tie[1]['name'] . " Tied!!";
+        
     }
     
-    // count($player['hand'])
-    
-    function calcPoints($allPlayers){
+    function calcDup($allPlayers){
         $max = 0;
-        $sum = 0;
+        $count = 0;
         $dup = false;
         foreach ($allPlayers as $player) {
             if ($player['handPoints'] < 42 && $max < $player['handPoints']){
                 $max = $player['handPoints'];
-                $sum += $player['handPoints'];
             }
-            elseif ($player['handPoints'] == $max){
-                $dup = true;
+        }
+        foreach ($allPlayers as $player) {
+            if($max == $player['handPoints'] ){
+                $count ++;
+            }
+        }
+        
+        if ($count > 1){
+            $dup = true;
+        }
+        
+        echo "DUP: " . $dup;
+        return $dup;
+    }
+    
+    function calcPoints($allPlayers){
+        $max = 0;
+        $sum = 0;
+        foreach ($allPlayers as $player) {
+            if ($player['handPoints'] < 42 && $max < $player['handPoints']){
+                $max = $player['handPoints'];
                 $sum += $player['handPoints'];
             }
             else{
@@ -104,8 +156,9 @@
             }
         }
         
+        echo "Max: " . $max;
+        
         foreach($allPlayers as $player){
-            $GLOBALS['allPlayers'][$player['var']]['points'] = 0;
             if($player['handPoints'] == $max){
                 $GLOBALS['allPlayers'][$player['var']]['winner'] = true;
                 $GLOBALS['allPlayers'][$player['var']]['points'] = $sum - $player['handPoints'];
@@ -161,27 +214,13 @@
         for($j = 0 ; $j < 5; ++$j ){
             ++$playerNum;
             $totalPoints = 0;
-            for($i = 0; $i <5; ++$i)
+            for($i = 0; $totalPoints < 36 && $i < 7; ++$i)
             {
                 $GLOBALS['allPlayers']['player' . $playerNum]['hand'][$i] = $deck[$deckMarker];
                 $GLOBALS['allPlayers']['player'.$playerNum]['handPoints'] += $deck[$deckMarker]->value;
                 $totalPoints += $deck[$deckMarker] -> value;
                 --$deckMarker;
             }
-        }
-    }
-    
-    function printGameState($allPlayers) {
-        foreach ($allPlayers as $player) {
-            if($player['imgURL']) {
-                echo "<img width='200' src='" . $player['imgURL'] . "' />";
-                echo $player['name'] . "<br>";
-            }
-            for($i = 0; $i < count($player['hand']); ++$i){
-               echo $player['hand'][$i]->imgUrl;
-            }
-            echo $player['handPoints'];
-            echo "</br>";
         }
     }
     
