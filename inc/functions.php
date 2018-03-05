@@ -10,7 +10,7 @@
     
     function initializePlayers() {
         global $allPlayers, $player1, $player2, $player3, $player4, $player5;
-        $names = array('Faith','Eros','Jose','Brandon','Evelin');
+        $names = array('Faith','Eros','Jose','Brandon');
         
         shuffle($names);
         
@@ -36,7 +36,6 @@
             'var' => "player3",
             'name' => $names[2],
             'imgURL' => './img/user_pics/' . $names[2] . '.jpg',
-            'imgURL' => './img/user_pics/corgo.jpg',
             'hand' => array(),
             'handPoints' => 0,
             'points' => 0
@@ -113,10 +112,8 @@
             }
         }
         
-        print_r($tie);
-        
         if($dup == true)
-        echo $tie[0]['name'] . " and " . $tie[1]['name'] . " Tied!!";
+            echo /*$tie[0]['name'] . " and " . $tie[1]['name'] . */" Tied!!";
         
     }
     
@@ -124,11 +121,13 @@
         $max = 0;
         $count = 0;
         $dup = false;
+        
         foreach ($allPlayers as $player) {
             if ($player['handPoints'] < 42 && $max < $player['handPoints']){
                 $max = $player['handPoints'];
             }
         }
+        
         foreach ($allPlayers as $player) {
             if($max == $player['handPoints'] ){
                 $count ++;
@@ -139,7 +138,6 @@
             $dup = true;
         }
         
-        echo "DUP: " . $dup;
         return $dup;
     }
     
