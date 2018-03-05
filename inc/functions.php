@@ -15,28 +15,28 @@
             'name' => 'Faith',
             'imgURL' => './img/user_pics/Faith.jpg',
             'hand' => array(),
-            'handPoints' => array(), //For suit Index/ point calculation
+            'handPoints' => 0, //For suit Index/ point calculation
             'points' => 0
             );
         $player2 = array(
             'name' => 'Eros',
             'imgURL' => './img/user_pics/Eros.JPG',
             'hand' => array(),
-            'handPoints' => array(),
+            'handPoints' => 0,
             'points' => 0
             );
         $player3 = array(
             'name' => 'JoseC',
             'imgURL' => './img/user_pics/corgo.jpg',
             'hand' => array(),
-            'handPoints' => array(),
+            'handPoints' => 0,
             'points' => 0
             );
         $player4 = array(
             'name' => 'Brandon',
             'imgURL' => './img/user_pics/Brandon.JPG',
             'hand' => array(),
-            'handPoints' => array(),
+            'handPoints' => 0,
             'points' => 0
             );
         
@@ -44,7 +44,7 @@
             'name' => 'Evelin',
             'imgURL' => './img/user_pics/Evelin.jpg',
             'hand' => array(),
-            'handPoints' => array(),
+            'handPoints' => 0,
             'points' => 0
             );
             
@@ -62,17 +62,17 @@
             echo "<img width='200' src='" . $player['imgURL'] . "' />";
             echo $player['name'] . "<br>";
             echo "<div id='player' >";
-            for($i = 0; $i < 5; ++$i){
+            for($i = 0; $i < count($player['hand']); ++$i){
                echo $player['hand'][$i]->imgUrl;
             }
-            echo $player['points'];
+            echo $player['handPoints'];
             echo "</div>";
         }
     }
     
     function calcPoints($allPlayers){
         foreach ($allPlayers as $player) {
-            foreach ($player['hand'] as $num){
+            foreach ($player['handPoints'] as $num){
                 $player['points'] += (int)substr($num, strlen($num) - 9, 1);
             }
             //echo "score: " . $player['points']; this works here but doesn't work in printGameState :(
@@ -100,10 +100,11 @@
         }
         
         $suitIndex = floor(($index%13) + 1);
+        //echo $suitIndex . "<br>";
         $cardObj = new cardObj();
         $cardObj->value = $suitIndex;
         $cardObj->imgUrl = "<img src='img/cards/$cardSuit/$suitIndex.png' />";
-       // echo $cardObj->imgUrl;
+        // echo $cardObj->imgUrl;
         //echo $cardObj->value;
         return $cardObj; //returns card objects now with value and img
     }
@@ -115,8 +116,6 @@
             array_push($cards, getImgURLForCardIndex($i));
         }
         shuffle($cards);
-       echo $cards;
-      
         return $cards; 
     }           
     
@@ -125,16 +124,18 @@
         $deckMarker = 51; //Placeholder for deck
         $playerNum = 1;
         
-    for($j = 0 ; $j < 5; ++$j ){
-        ++$playerNum;
-        for($i = 0; $i < 5 ; $i++)
-        {
-            $GLOBALS['allPlayers']['player' . $playerNum]['hand'][$i] = $deck[$deckMarker];
-            --$deckMarker;
+        for($j = 0 ; $j < 5; ++$j ){
+            ++$playerNum;
+            $totalPoints = 0;
+            for($i = 0; $totalPoints < 36; ++$i)
+            {
+                $GLOBALS['allPlayers']['player' . $playerNum]['hand'][$i] = $deck[$deckMarker];
+                $GLOBALS['allPlayers']['player'.$playerNum]['handPoints'] += $deck[$deckMarker]->value;
+                $totalPoints += $deck[$deckMarker] -> value;
+                --$deckMarker;
+            }
         }
-          
-    }
-                   
+    }  
     
     //going to work on a function to generate players scores
     
@@ -180,7 +181,6 @@
        
        
                 
-    }
     
 
 ?>
