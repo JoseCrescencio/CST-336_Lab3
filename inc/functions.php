@@ -1,15 +1,15 @@
 <?php
     
-    function initializePlayers() {
-        global $allPlayers, $player1, $player2, $player3, $player4, $player5;
-        
-        class cardObj
+    class cardObj
         {
             
             public $imgUrl = '';
             public $value = 0;
             
         }
+    
+    function initializePlayers() {
+        global $allPlayers, $player1, $player2, $player3, $player4, $player5;
         
         $player1 = array(
             'name' => 'Faith',
