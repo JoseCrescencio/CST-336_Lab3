@@ -18,7 +18,7 @@
                 $deck = generateDeck();
                 initializePlayers();
                 generateHand($deck);
-               // calcPoints($allPlayers);
+                calcPoints($allPlayers);
                 printGameState($allPlayers);
             ?>
         </div>

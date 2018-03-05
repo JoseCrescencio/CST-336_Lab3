@@ -10,11 +10,13 @@
     
     function initializePlayers() {
         global $allPlayers, $player1, $player2, $player3, $player4, $player5;
-        $names = array('Faith','Eros','Jose','Brandon');
+        $names = array('Faith','Eros','Jose','Brandon','Evelin');
         
         shuffle($names);
         
         $player1 = array(
+            'var' => "player1",
+            'winner' => false,
             'name' => $names[0],
             'imgURL' => './img/user_pics/' . $names[0]. '.jpg',
             'hand' => array(),
@@ -22,6 +24,8 @@
             'points' => 0
             );
         $player2 = array(
+            'var' => "player2",
+            'winner' => false,
             'name' => $names[1],
             'imgURL' => './img/user_pics/' . $names[1] . '.jpg',
             'hand' => array(),
@@ -29,13 +33,17 @@
             'points' => 0
             );
         $player3 = array(
+            'var' => "player3",
             'name' => $names[2],
             'imgURL' => './img/user_pics/' . $names[2] . '.jpg',
+            'imgURL' => './img/user_pics/corgo.jpg',
             'hand' => array(),
             'handPoints' => 0,
             'points' => 0
             );
         $player4 = array(
+            'var' => "player4",
+            'winner' => false,
             'name' => $names[3],
             'imgURL' => './img/user_pics/' . $names[3] . '.jpg',
             'hand' => array(),
@@ -44,8 +52,10 @@
             );
         
         $player5 = array(
-            'name' => 'Evelin',
-            'imgURL' => './img/user_pics/Evelin.jpg',
+            'var' => "player5",
+            'winner' => false,
+            'name' => $names[4],
+            'imgURL' => './img/user_pics/' . $names[4] . '.jpg',
             'hand' => array(),
             'handPoints' => 0,
             'points' => 0
@@ -60,13 +70,47 @@
             );
     }
     
-    function calcPoints($allPlayers){
+    function printGameState($allPlayers) {
         foreach ($allPlayers as $player) {
-            foreach ($player['handPoints'] as $num){
-                $player['points'] += (int)substr($num, strlen($num) - 9, 1);
+            echo "<img width='200' src='" . $player['imgURL'] . "' />";
+            echo $player['name'] . "<br>";
+            echo "<div id='player' >";
+            for($i = 0; $i < 5; ++$i){
+               echo $player['hand'][$i]->imgUrl;
             }
-            //echo "score: " . $player['points']; this works here but doesn't work in printGameState :(
+            echo "Hand Points: " . $player['handPoints'];
+            echo "<br> Player points: " . $player['points'];
+            echo "</div>";
         }
+    }
+    
+    // count($player['hand'])
+    
+    function calcPoints($allPlayers){
+        $max = 0;
+        $sum = 0;
+        $dup = false;
+        foreach ($allPlayers as $player) {
+            if ($player['handPoints'] < 42 && $max < $player['handPoints']){
+                $max = $player['handPoints'];
+                $sum += $player['handPoints'];
+            }
+            elseif ($player['handPoints'] == $max){
+                $dup = true;
+                $sum += $player['handPoints'];
+            }
+            else{
+                $sum += $player['handPoints'];
+            }
+        }
+        
+        foreach($allPlayers as $player){
+            $GLOBALS['allPlayers'][$player['var']]['points'] = 0;
+            if($player['handPoints'] == $max){
+                $GLOBALS['allPlayers'][$player['var']]['winner'] = true;
+                $GLOBALS['allPlayers'][$player['var']]['points'] = $sum - $player['handPoints'];
+            }
+        }   
     }
     
     //pseudocode:
@@ -117,7 +161,7 @@
         for($j = 0 ; $j < 5; ++$j ){
             ++$playerNum;
             $totalPoints = 0;
-            for($i = 0; $totalPoints < 36; ++$i)
+            for($i = 0; $i <5; ++$i)
             {
                 $GLOBALS['allPlayers']['player' . $playerNum]['hand'][$i] = $deck[$deckMarker];
                 $GLOBALS['allPlayers']['player'.$playerNum]['handPoints'] += $deck[$deckMarker]->value;
