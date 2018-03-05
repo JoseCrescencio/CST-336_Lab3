@@ -2,6 +2,15 @@
     
     function initializePlayers() {
         global $allPlayers, $player1, $player2, $player3, $player4, $player5;
+        
+        class cardObj
+        {
+            
+            public $imgUrl = '';
+            public $value = 0;
+            
+        }
+        
         $player1 = array(
             'name' => 'Faith',
             'imgURL' => './img/user_pics/Faith.jpg',
@@ -91,7 +100,9 @@
         }
         
         $suitIndex = floor(($index%13) + 1);
-        
+        $cardObj = new cardObj();
+        $cardObj->value = $suitIndex;
+        $cardObj->imgUrl = "<img src='img/cards/$cardSuit/$suitIndex.png' />";
         //echo "<img src='img/cards/$cardSuit/$suitIndex.png' >";
         return "<img src='img/cards/$cardSuit/$suitIndex.png' />";
     }
