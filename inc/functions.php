@@ -103,8 +103,9 @@
         $cardObj = new cardObj();
         $cardObj->value = $suitIndex;
         $cardObj->imgUrl = "<img src='img/cards/$cardSuit/$suitIndex.png' />";
-        //echo "<img src='img/cards/$cardSuit/$suitIndex.png' >";
-        return "<img src='img/cards/$cardSuit/$suitIndex.png' />";
+       // echo $cardObj->imgUrl;
+        //echo $cardObj->value;
+        return $cardObj; //returns card objects now with value and img
     }
     
     
@@ -114,7 +115,7 @@
             array_push($cards, getImgURLForCardIndex($i));
         }
         shuffle($cards);
-       // echo $cards;
+       echo $cards;
       
         return $cards; 
     }           
