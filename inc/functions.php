@@ -154,8 +154,6 @@
             }
         }
         
-        echo "Max: " . $max;
-        
         foreach($allPlayers as $player){
             if($player['handPoints'] == $max){
                 $GLOBALS['allPlayers'][$player['var']]['winner'] = true;
