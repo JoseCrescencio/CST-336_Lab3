@@ -10,31 +10,34 @@
     
     function initializePlayers() {
         global $allPlayers, $player1, $player2, $player3, $player4, $player5;
+        $names = array('Faith','Eros','Jose','Brandon');
+        
+        shuffle($names);
         
         $player1 = array(
-            'name' => 'Faith',
-            'imgURL' => './img/user_pics/Faith.jpg',
+            'name' => $names[0],
+            'imgURL' => './img/user_pics/' . $names[0]. '.jpg',
             'hand' => array(),
             'handPoints' => 0, //For suit Index/ point calculation
             'points' => 0
             );
         $player2 = array(
-            'name' => 'Eros',
-            'imgURL' => './img/user_pics/Eros.JPG',
+            'name' => $names[1],
+            'imgURL' => './img/user_pics/' . $names[1] . '.jpg',
             'hand' => array(),
             'handPoints' => 0,
             'points' => 0
             );
         $player3 = array(
-            'name' => 'JoseC',
-            'imgURL' => './img/user_pics/corgo.jpg',
+            'name' => $names[2],
+            'imgURL' => './img/user_pics/' . $names[2] . '.jpg',
             'hand' => array(),
             'handPoints' => 0,
             'points' => 0
             );
         $player4 = array(
-            'name' => 'Brandon',
-            'imgURL' => './img/user_pics/Brandon.JPG',
+            'name' => $names[3],
+            'imgURL' => './img/user_pics/' . $names[3] . '.jpg',
             'hand' => array(),
             'handPoints' => 0,
             'points' => 0
